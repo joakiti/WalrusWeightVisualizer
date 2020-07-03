@@ -1,12 +1,12 @@
 
 export const REMOVE_WEIGHT = 'REMOVE_WEIGHT';
-export const removeWeight = text => ({
+export const removeWeight = weight => ({
     type: REMOVE_WEIGHT,
-    payload: { text },
+    payload: { weight },
 });
 
 export const CREATE_WEIGHT = 'CREATE_WEIGHT';
-export const createWeight = text => ({
+export const createWeight = weight => ({
     type: CREATE_WEIGHT,
-    payload: { text }
+    payload: { weight }
 })

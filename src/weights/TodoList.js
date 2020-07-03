@@ -24,13 +24,13 @@ const WeightList = ({weights = [], onRemovePressed}) => {
         <div className="list-wrapper">
             <List component="nav" aria-label="main mailbox folders">
                 {weights.map(w =>
-                    <div key={w.text}>
+                    <div key={w.weight}>
                         <Divider/>
                         <ListItem>
-                            <ListItemText primary={w.text}/>
+                            <ListItemText primary={w.weight}/>
                             <Tooltip title="Delete">
                                 <IconButton className={classes.red_button} aria-label="delete" onClick={() => {
-                                    onRemovePressed(w.text)
+                                    onRemovePressed(w.weight)
                                 }}>
                                     <DeleteIcon/>
                                 </IconButton>

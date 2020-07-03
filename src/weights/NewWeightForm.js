@@ -19,7 +19,7 @@ const NewTodoForm = ({weights, onCreatePressed}) => {
             />
             <Button variant="contained" color="primary" onClick={() => {
             const isDuplicateText =
-                weights.some(todo => todo.text === null);
+                weights.some(todo => todo.weight === null);
             if (!isDuplicateText && inputValue) {
                 onCreatePressed(inputValue);
                 setInputValue('');

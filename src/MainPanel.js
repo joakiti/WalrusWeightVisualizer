@@ -34,8 +34,8 @@ const mapDispatchToProps = dispatch => ({
     onStartPressed: (weights, goal) => {
         dispatch(startCalculation(weights, goal));
         for (let targetWeight = 0; targetWeight < goal * 2; targetWeight++) {
-            for (let noOfWeights = 1; noOfWeights < weights + 1; noOfWeights++) {
-                dispatch(writeOptimal(noOfWeights, targetWeight))
+            for (let noOfWeights = 1; noOfWeights < weights.length + 1; noOfWeights++) {
+                dispatch(writeOptimal(noOfWeights, targetWeight, weights))
             }
         }
     }

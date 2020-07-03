@@ -5,16 +5,15 @@ export const weights = (state = [], action) => {
 
     switch (type) {
     case CREATE_WEIGHT: {
-        const { text } = payload;
+        const { weight } = payload;
         const newTodo = {
-            text,
-            isCompleted: false,
+            weight,
         };
         return state.concat(newTodo);
     }
     case REMOVE_WEIGHT: {
-        const { text } = payload;
-        return state.filter(todo => todo.text !== text);
+        const { weight } = payload;
+        return state.filter(todo => todo.weight !== weight);
     }
     default:
         return state;

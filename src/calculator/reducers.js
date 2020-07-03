@@ -12,14 +12,17 @@ export const calculator = (state = [], action) => {
                 x[i] = new Array(goal * 2)
             }
             for (let i = 0; i < goal * 2; i++) {
-                //Using the first I weights, is it possible to obtain 0 kilos?
+                //Using the first I weights, is it possible to obtain 0 kilos? //Yes, by simply not using it.
                 x[0][i] = false;
             }
+            x[0][0] = true;
             return x;
         }
         case WRITE_OPTIMAL: {
             const {noOfWeights, targetWeight, weights} = payload;
-            x[noOfWeights][targetWeight] = x[noOfWeights - 1][targetWeight] || x[noOfWeights-1][targetWeight-weights[noOfWeights]]
+            let x = state;
+            let weightIndex = noOfWeights - 1;
+            x[noOfWeights][targetWeight] = x[noOfWeights - 1][targetWeight] || x[noOfWeights - 1][targetWeight - weights[weightIndex].weight]
             return x;
         }
         default:

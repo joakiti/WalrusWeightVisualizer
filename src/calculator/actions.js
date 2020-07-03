@@ -8,10 +8,11 @@ export const startCalculation = (weights, goal) => ({
 });
 
 export const WRITE_OPTIMAL = 'WRITE_OPTIMAL';
-export const writeOptimal = (noOfWeights, targetWeight) => ({
+export const writeOptimal = (noOfWeights, targetWeight, weights) => ({
     type: WRITE_OPTIMAL,
     payload: {
         noOfWeights: noOfWeights,
-        targetWeight: targetWeight
+        targetWeight: targetWeight,
+        weights: weights
     }
 })
