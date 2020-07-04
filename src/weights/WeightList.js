@@ -2,7 +2,6 @@ import React from 'react';
 import {connect} from 'react-redux';
 import './css/TodoList.css'
 import {removeWeight} from './redux/actions'
-import NewWeightForm from "./NewWeightForm";
 import List from "@material-ui/core/List";
 import {ListItem} from "@material-ui/core";
 import ListItemText from "@material-ui/core/ListItemText";
@@ -19,17 +18,17 @@ const iconStyle = makeStyles({
 })
 
 const WeightList = ({weights = [], onRemovePressed}) => {
-    const weightsWithIndex = buildListItems(weights, onRemovePressed);
+    const weightIcons = buildWeightIcons(weights, onRemovePressed);
 
     return (
         <div className="list-wrapper">
             <List component="nav" aria-label="main mailbox folders">
-                {weightsWithIndex}
+                {weightIcons}
             </List>
         </div>
     )
 }
-const buildListItems = (weights, onRemovePressed) => {
+const buildWeightIcons = (weights, onRemovePressed) => {
     const classes = iconStyle();
 
     return weights.map((w, index) =>

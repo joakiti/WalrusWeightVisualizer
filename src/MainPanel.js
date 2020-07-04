@@ -2,8 +2,6 @@ import React, {useState} from 'react';
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import {connect} from "react-redux";
-import {removeWeight} from "./weights/redux/actions";
-import {startCalculation, writeOptimal} from "./calculator/actions";
 import {findOptimalSolution} from "./calculator/actionHandlers";
 
 
@@ -23,7 +21,6 @@ const MainPanel = ({weights = [], calculatorArray = [], onStartPressed}) => {
                 color="inherit"
                 onClick={() => onStartPressed(weights, inputValue, calculatorArray)}
             >Start</Button>
-            <img alt={"Photo of weight lifting walrus"}/>
         </div>)
 }
 const mapStateToProps = state => ({
