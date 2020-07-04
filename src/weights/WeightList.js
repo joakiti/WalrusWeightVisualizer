@@ -19,30 +19,36 @@ const iconStyle = makeStyles({
 })
 
 const WeightList = ({weights = [], onRemovePressed}) => {
-    const classes = iconStyle();
+    const weightsWithIndex = buildListItems(weights, onRemovePressed);
+
     return (
         <div className="list-wrapper">
             <List component="nav" aria-label="main mailbox folders">
-                {weights.map(w =>
-                    <div key={w.weight}>
-                        <Divider/>
-                        <ListItem>
-                            <ListItemText primary={w.weight}/>
-                            <Tooltip title="Delete">
-                                <IconButton className={classes.red_button} aria-label="delete" onClick={() => {
-                                    onRemovePressed(w.weight)
-                                }}>
-                                    <DeleteIcon/>
-                                </IconButton>
-                            </Tooltip>
-                        </ListItem>
-                        <Divider/>
-                    </div>
-                )}
+                {weightsWithIndex}
             </List>
         </div>
     )
 }
+const buildListItems = (weights, onRemovePressed) => {
+    const classes = iconStyle();
+
+    return weights.map((w, index) =>
+        <div key={index}>
+            <Divider/>
+            <ListItem>
+                <ListItemText primary={w.weight}/>
+                <Tooltip title="Delete">
+                    <IconButton className={classes.red_button} aria-label="delete" onClick={() => {
+                        onRemovePressed(w.weight)
+                    }}>
+                        <DeleteIcon/>
+                    </IconButton>
+                </Tooltip>
+            </ListItem>
+            <Divider/>
+        </div>)
+}
+
 const mapStateToProps = state => ({
     weights: state.weights,
 });

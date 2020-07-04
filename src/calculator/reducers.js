@@ -1,4 +1,4 @@
-import {START_CALCULATION, WRITE_OPTIMAL} from './actions';
+import {START_CALCULATION, WRITE_OPTIMAL, WRITE_TO} from './actions';
 
 export const calculator = (state = [], action) => {
     const {type, payload} = action;
@@ -6,16 +6,17 @@ export const calculator = (state = [], action) => {
     switch (type) {
         case START_CALCULATION: {
             const {weights, goal} = payload;
-            console.log("Starting calculation")
+
             let x = new Array(weights + 1);
             for (let i = 0; i <= weights.length; i++) {
                 x[i] = new Array(goal * 2)
             }
-            for (let i = 0; i < goal * 2; i++) {
-                //Using the first I weights, is it possible to obtain 0 kilos? //Yes, by simply not using it.
-                x[0][i] = false;
-            }
-            x[0][0] = true;
+            return x;
+        }
+        case WRITE_TO: {
+            const {weight, targetWeight, value} = payload;
+            let x = state;
+            x[weight][targetWeight] = value;
             return x;
         }
         case WRITE_OPTIMAL: {

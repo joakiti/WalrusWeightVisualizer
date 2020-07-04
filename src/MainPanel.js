@@ -4,6 +4,7 @@ import Button from "@material-ui/core/Button";
 import {connect} from "react-redux";
 import {removeWeight} from "./weights/redux/actions";
 import {startCalculation, writeOptimal} from "./calculator/actions";
+import {findOptimalSolution} from "./calculator/actionHandlers";
 
 
 const MainPanel = ({weights = [], calculatorArray = [], onStartPressed}) => {
@@ -32,12 +33,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
     onStartPressed: (weights, goal) => {
-        dispatch(startCalculation(weights, goal));
-        for (let targetWeight = 0; targetWeight < goal * 2; targetWeight++) {
-            for (let noOfWeights = 1; noOfWeights < weights.length + 1; noOfWeights++) {
-                dispatch(writeOptimal(noOfWeights, targetWeight, weights))
-            }
-        }
+        findOptimalSolution(dispatch, weights, goal);
     }
 });
 
