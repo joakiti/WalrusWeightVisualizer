@@ -7,7 +7,6 @@ import NewWeightForm from "./weights/NewWeightForm";
 import WeightInfo from "./weights/WeightInfo";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
-import {ButtonAppBar} from "./ButtonAppBar";
 import {createMuiTheme, makeStyles, ThemeProvider} from '@material-ui/core/styles';
 
 import MainPanel from "./MainPanel";
@@ -15,11 +14,11 @@ import Paper from "@material-ui/core/Paper";
 
 const theme = createMuiTheme({
     palette: {
-        secondary: {
-            main: '#3d68de'
-        },
         primary: {
             main: '#ed7303'
+        },
+        secondary: {
+            main: '#3d68de'
         },
     },
     typography: {

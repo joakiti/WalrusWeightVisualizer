@@ -22,8 +22,11 @@ export const calculator = (state = [], action) => {
         case WRITE_OPTIMAL: {
             const {noOfWeights, targetWeight, weights} = payload;
             let x = state;
+
             let weightIndex = noOfWeights - 1;
+
             x[noOfWeights][targetWeight] = x[noOfWeights - 1][targetWeight] || x[noOfWeights - 1][targetWeight - weights[weightIndex].weight]
+
             return x;
         }
         default:
