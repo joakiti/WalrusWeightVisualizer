@@ -6,6 +6,7 @@ import { Provider } from 'react-redux';
 import { configureStore } from './store';
 import App from '../App.js';
 import Header from "../Header";
+import Footer from "../Footer";
 
 const store = configureStore();
 
@@ -18,6 +19,7 @@ ReactDOM.render(
         persistor={persistor}>
             <Header/>
             <App />
+            <Footer/>
         </PersistGate>
     </Provider>,
     document.getElementById('root'),

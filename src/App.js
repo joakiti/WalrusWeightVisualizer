@@ -56,7 +56,6 @@ const App = () => (
                 </Grid>
             </Grid>
             <Paper>
-                {ButtonAppBar()}
                 <div className="App">
                     {LeftPanel()}
                     <MainPanel/>
