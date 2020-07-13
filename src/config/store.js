@@ -18,6 +18,19 @@ const persistConfig = {
     stateReconciler: autoMergeLevel2
 }
 
+export const initial_weights = [
+    {
+        weight: 6
+    },
+    {
+        weight: 10
+    },
+    {
+        weight: 5
+    }
+]
+
+
 const rootReducer = combineReducers(reducers);
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
