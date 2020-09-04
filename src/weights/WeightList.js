@@ -31,21 +31,26 @@ const WeightList = ({weights = [], onRemovePressed}) => {
 const buildWeightIcons = (weights, onRemovePressed) => {
     const classes = iconStyle();
 
-    return weights.map((w, index) =>
-        <div key={index}>
-            <Divider/>
-            <ListItem>
-                <ListItemText primary={w.weight}/>
-                <Tooltip title="Delete">
-                    <IconButton className={classes.red_button} aria-label="delete" onClick={() => {
-                        onRemovePressed(w.weight)
-                    }}>
-                        <DeleteIcon/>
-                    </IconButton>
-                </Tooltip>
-            </ListItem>
-            <Divider/>
-        </div>)
+    return weights.map((w, index) => {
+        if (w.weight != 0) {
+            return <div key={index}>
+                <Divider/>
+                <ListItem>
+                    <ListItemText primary={w.weight}/>
+                    <Tooltip title="Delete">
+                        <IconButton className={classes.red_button} aria-label="delete" onClick={() => {
+                            onRemovePressed(w.weight)
+                        }}>
+                            <DeleteIcon/>
+                        </IconButton>
+                    </Tooltip>
+                </ListItem>
+                <Divider/>
+            </div>
+        }
+        return <div key={index}/>
+
+    })
 }
 
 const mapStateToProps = state => ({

@@ -5,6 +5,7 @@ import {createMuiTheme, ThemeProvider} from '@material-ui/core/styles';
 
 import MainPanel from "./MainPanel";
 import LeftPanel from "./LeftPanel";
+import Calculator from "./calculator/components/calculator";
 
 const theme = createMuiTheme({
     palette: {
@@ -31,6 +32,7 @@ const App = () => (
             <div className="App">
                 <LeftPanel/>
                 <MainPanel/>
+                <Calculator/>
             </div>
         </ThemeProvider>
     </Fragment>

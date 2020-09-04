@@ -1,14 +1,23 @@
 import {START_CALCULATION, WRITE_OPTIMAL, WRITE_TO} from './actions';
+import {initial_goal, initial_weights} from "../config/store";
 
-export const calculator = (state = [], action) => {
+const defaultCalculatorValue = () => {
+    let x = new Array(initial_weights)
+    for (let i = 0; i <= initial_weights.length; i++) {
+        x[i] = new Array(initial_goal * 2)
+    }
+    return x;
+}
+
+export const calculator = (state = defaultCalculatorValue(), action) => {
     const {type, payload} = action;
 
     switch (type) {
         case START_CALCULATION: {
             const {weights, goal} = payload;
 
-            let x = new Array(weights + 1);
-            for (let i = 0; i <= weights.length; i++) {
+            let x = new Array(weights);
+            for (let i = 0; i < weights.length; i++) {
                 x[i] = new Array(goal * 2)
             }
             return x;
@@ -23,7 +32,7 @@ export const calculator = (state = [], action) => {
             const {noOfWeights, targetWeight, weights} = payload;
             let x = state;
 
-            let weightIndex = noOfWeights - 1;
+            let weightIndex = noOfWeights;
 
             x[noOfWeights][targetWeight] = x[noOfWeights - 1][targetWeight] || x[noOfWeights - 1][targetWeight - weights[weightIndex].weight]
 

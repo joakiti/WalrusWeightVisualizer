@@ -1,11 +1,11 @@
 import React, {useState} from 'react';
-import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import {connect} from "react-redux";
 import {findOptimalSolution} from "./calculator/actionHandlers";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import Typography from "@material-ui/core/Typography";
 import Slider from "@material-ui/core/Slider";
+import {initial_goal} from "./config/store";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -19,7 +19,9 @@ const useStyles = makeStyles((theme) => ({
 const MainPanel = ({weights = [], calculatorArray = [], onStartPressed}) => {
     const classes = useStyles();
 
-    const [inputValue, setInputValue] = useState(0);
+    const initialValue = initial_goal;
+
+    const [inputValue, setInputValue] = useState(initialValue);
     return (
         <div>
             <div className={classes.root}>
@@ -27,8 +29,10 @@ const MainPanel = ({weights = [], calculatorArray = [], onStartPressed}) => {
                     Weight goal:
                 </Typography>
                 <Slider
-                    defaultValue={80}
-                    getAriaValueText={setInputValue}
+                    defaultValue={initialValue}
+                    onChangeCommitted={(event, value) => {
+                        setInputValue(prevState => value)
+                    }}
                     aria-labelledby="discrete-slider"
                     step={1}
                     valueLabelDisplay="auto"

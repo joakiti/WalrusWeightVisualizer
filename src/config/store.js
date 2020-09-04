@@ -20,6 +20,9 @@ const persistConfig = {
 
 export const initial_weights = [
     {
+        weight: 0
+    },
+    {
         weight: 6
     },
     {
@@ -29,6 +32,8 @@ export const initial_weights = [
         weight: 5
     }
 ]
+
+export const initial_goal = 8;
 
 
 const rootReducer = combineReducers(reducers);
